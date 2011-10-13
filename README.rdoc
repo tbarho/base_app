@@ -1,0 +1,16 @@
+= Notes For App
+
+== Authentication
+Railscasts or Rails Tutorial
+
+== Authorization
+CanCan.  Only handle admin role.  Leave rest for per-project implementation.
+
+== Recurring Payments
+Stripe v.s. Paypal.  Favoring Stripe currently
+
+== Base Layout
+Something that handles titles, errors, etc.  Nifty-gen should help.
+
+== S3 Attachments
+Paperclip.  Check video for multiple attachments
