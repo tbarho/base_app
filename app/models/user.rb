@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
+  attr_accessible :username, :email, :password, :password_confirmation
   has_secure_password
-  validates :username,      :presence => true,
+  validates :username,  :presence => true,
                         :length => { :within => 5..50 },
                         :uniqueness => { :case_sensitive => false }
   validates :email,     :presence => :true,
