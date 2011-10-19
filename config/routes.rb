@@ -2,11 +2,13 @@ BaseApp::Application.routes.draw do
   resources :users
   resources :sessions, :only => [ :new, :create, :destroy ]
 
-  root :to => 'users#new'
-
   match '/signup', :to => 'users#new'
   match '/signin', :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
+
+
+  # Root goes at end of file
+  root :to => 'sessions#new'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
