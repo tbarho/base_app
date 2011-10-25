@@ -1,4 +1,15 @@
 $primary_color: #4b7399;
+@mixin list-right {
+  ul {
+    float: right;
+
+    li {
+      list-style: none;
+      float: left;
+      margin-right: 10px;
+    }
+  }
+}
 
 html, body {
   background-color: $primary_color;
@@ -87,3 +98,6 @@ form {
   }
 }
 
+nav {
+  @include list-right;
+}

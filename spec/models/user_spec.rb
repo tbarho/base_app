@@ -1,12 +1,11 @@
 require 'spec_helper'
 
 describe User do
+  before(:each) do
+   @attr = { :username => "Test Tester", :email => "test@example.com", :password => "secret", :password_confirmation => "secret" }
+  end
   
   describe "validations" do
-    before(:each) do
-     @attr = { :username => "Test Tester", :email => "test@example.com", :password => "secret", :password_confirmation => "secret" }
-    end
-
     it "should create an instance give valid attributes" do
       User.create!(@attr)
     end
@@ -59,6 +58,27 @@ describe User do
 
   describe "associations" do
 
+  end
+
+  describe "authorizations" do
+    before(:each) do
+      @user = User.create!(@attr)
+      @roles = ["admin"]
+    end
+    it "should have a roles_mask" do
+      @user.should respond_to(:roles_mask)
+    end
+    it "should have a roles method" do
+      @user.should respond_to(:roles)
+    end
+    it "should not be an admin by default" do
+      @user.should_not be_admin
+    end
+    it "should be an admin after adding that role" do
+      @user.roles = ["admin"]
+      @user.save!
+      @user.should be_admin
+    end
   end
 
 end
