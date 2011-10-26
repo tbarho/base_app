@@ -1,0 +1,8 @@
+<% if current_user && current_user.admin? %>
+<div id="admin_toolbar">
+  <ul>
+  	<li><strong>Administer:</strong></li>
+  	<li><%= link_to "Users", users_path %></li>
+  </ul>
+</div>
+<% end %>

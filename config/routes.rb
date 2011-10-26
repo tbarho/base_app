@@ -1,6 +1,6 @@
 BaseApp::Application.routes.draw do
 
-  resources :users
+  resources :users, :only => [ :show, :new, :create, :edit, :update ]
   resources :sessions, :only => [ :new, :create, :destroy ]
 
   match '/signup', :to => 'users#new'

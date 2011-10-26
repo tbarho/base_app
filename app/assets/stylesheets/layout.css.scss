@@ -1,20 +1,39 @@
-$primary_color: #4b7399;
-@mixin list-right {
-  ul {
-    float: right;
+$body_background: #4b7399;
 
+@mixin list($float: left, $margin: 10px) {
+  ul {
+    float: $float;
+    margin: 0;
+    padding: 0;
     li {
-      list-style: none;
       float: left;
-      margin-right: 10px;
+      list-style: none;
+      margin-right: $margin;
     }
   }
 }
+@mixin radius($radius: 5px) {
+  border-radius: $radius;
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+}
+@mixin shadow($color: #CCC, $values: 1px 1px 4px) {
+  box-shadow: $color $values;
+  -moz-box-shadow: $color $values;
+  -webkit-box-shadow: $color $values;
+}
+@mixin gradient($top, $bottom) {
+  background-image: -moz-linear-gradient(top, $top, $bottom);
+  background-image: -webkit-linear-gradient($top, $top, $bottom, $bottom);
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=$top, EndColorStr=$bottom);
+}
 
 html, body {
-  background-color: $primary_color;
+  background-color: $body_background;
   font-family: Verdana, Helvetica, Arial;
   font-size: 14px;
+  margin: 0 10px;
+  padding: 0;
 }
 
 a {
@@ -99,5 +118,14 @@ form {
 }
 
 nav {
-  @include list-right;
+  @include list(right, 15px);
+}
+
+#admin_toolbar {
+  background: #fff;
+  border: solid 1px #000;
+  border-top: none;
+  overflow: auto;
+  padding: 10px;
+  @include list(left, 20px);
 }
